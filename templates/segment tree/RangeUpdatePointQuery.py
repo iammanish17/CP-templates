@@ -4,7 +4,7 @@ from math import log2
 class SegmentTree:
     def __init__(self, array):
         self.n = len(array)
-        self.size = 2**(int(log2(self.n-1))+1)
+        self.size = 2**(int(log2(self.n-1))+1) if self.n != 1 else 1
         self.default = 0
         self.data = [self.default] * (2 * self.size)
         self.process(array)
