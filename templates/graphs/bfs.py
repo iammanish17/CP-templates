@@ -1,12 +1,14 @@
+from collections import deque
+
 def bfs(graph, alpha=0):
     """Breadth first search on a graph!"""
     n = len(graph)
-    q = [alpha]
+    q = deque([alpha])
     used = [False]*n
     used[alpha] = True
     dist, parents = [0]*n, [-1]*n
     while q:
-        v = q.pop()
+        v = q.popleft()
         for u in graph[v]:
             if not used[u]:
                 used[u] = True
