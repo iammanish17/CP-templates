@@ -1,9 +1,8 @@
-from math import inf
 from heapq import heappop, heappush
 
 def dijkstra(graph, alpha):
     n = len(graph)
-    distance = [inf]*n
+    distance = [float("inf")]*n
     distance[alpha] = 0
     parents = [-1]*n
     queue = []
