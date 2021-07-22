@@ -2,6 +2,8 @@ def dfs(graph, alpha):
     """Depth First Search on a graph!"""
     n = len(graph)
     visited = [False]*n
+    finished = [False]*n
+    dp = [0] * n
     stack = [alpha]
     while stack:
         v = stack[-1]
@@ -12,4 +14,11 @@ def dfs(graph, alpha):
                     stack.append(u)
         else:
             stack.pop()
-    return visited
+            dp[v] = True
+            for child in graph[v]:
+                if finished[child]:
+                    dp[v] += dp[child]
+            
+            finished[v] = True
+            
+    return visited, dp
